@@ -2,6 +2,7 @@
 #include <GL/glut.h>
 #include <math.h>
 
+
 A_star::A_star(RoadNet* road,int source,int target):p_road(road),source_id(source),target_id(target)
 {
     m_visited.resize(road->GetNodesNum());
