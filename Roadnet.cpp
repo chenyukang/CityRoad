@@ -1,6 +1,13 @@
 #include "Roadnet.h"
 #include <fstream>
+
+#ifdef __APPLE__
+#include "glui.h"
+#include <GLUT/glut.h>
+#else
 #include <GL/glut.h>
+#endif
+
 using namespace std;
 
 RoadNet::RoadNet(const char* nodes_file,const char* edges_file)
@@ -46,9 +53,9 @@ void RoadNet::Draw()
                        Nodes[m_Map[i][j].to_id].y/100,0.0f);
         }
     }
-            
+
     glEnd();
-    
+
    //  glColor3f(1.0f,0.0f,0.0f);
 //     glPointSize(2.0f);
 //     glBegin(GL_POINT);

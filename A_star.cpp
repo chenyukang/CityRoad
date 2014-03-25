@@ -1,5 +1,12 @@
 #include "A_star.h"
+
+#ifdef __APPLE__
+#include "glui.h"
+#include <GLUT/glut.h>
+#else
 #include <GL/glut.h>
+#endif
+
 #include <math.h>
 
 A_star::A_star(RoadNet* road,int source,int target):p_road(road),source_id(source),target_id(target)
@@ -82,7 +89,7 @@ bool A_star::Search()
         {
             int next_id=p_road->m_Map[now.id][i].to_id;
             if(!m_visited[next_id])
-            {//如果还未访问 
+            {//如果还未访问
                 float val=Eval_func(next_id);
                 float n_cost=now.cost+p_road->m_Map[now.id][i].weight;
                 Item next(next_id,val,n_cost);
